@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
-const friendsRouter = require('./routes/friends.router');
+const friendsRouter = require('./routes/friends.router.js');
+const messagesRouter = require('./routes/messages.router.js');
 
 const PORT = 3000;
-
-const messagesController = require('./controllers/messages.controller')
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
 
