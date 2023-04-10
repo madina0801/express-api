@@ -6,8 +6,6 @@ const messagesController = require('./controllers/messages.controller')
 
 const friendsController = require('./controllers/friends.controller')
 
-
-
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
 
 // Logging middleware
@@ -18,13 +16,16 @@ app.use((req, res, next) => {
 	console.log(`${req.method} ${req.url} ${delta}ms`);
 })
 
-app.use(express.json())
+app.use(express.json());
 
-app.post('/friends', friendsController.postFriend)
+const friendsRouter = express.Router();
 
-app.get('/friends', friendsController.getFriends)
+friendsRouter.post('/', friendsController.postFriend);
+friendsRouter.get('/', friendsController.getFriends);
+friendsRouter.get('/:friendId', friendsController.getFriendById);
+app.use('/friends', friendsRouter);
 
-app.get('/friends/:friendId', friendsController.getFriendById)
+
 
 app.get('/messages', messagesController.getMessages)
 
