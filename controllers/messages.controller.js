@@ -8,5 +8,5 @@ function postMessage(req, res) {
 
 module.exports = {
 	getMessages,
-	postMessage
+	postMessage,
 }
