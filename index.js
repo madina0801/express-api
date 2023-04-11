@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 	next();
 	const delta = Date.now() - start;
 	console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
-})
+});
 
 app.use(express.json());
 app.use('/friends', friendsRouter);

@@ -1,5 +1,9 @@
+const path = require('path');
+
+
 function getMessages(req, res) {
-	res.send('Nice to meet you!');
+	res.sendFile('../public/friends.jpg')
+	// res.send('Nice to meet you!');
 }
 
 function postMessage(req, res) {
