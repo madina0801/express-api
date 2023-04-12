@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+
+app.set('view engine', 'hbs');
 const path = require('path');
 
 const friendsRouter = require('./routes/friends.router.js');
