@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 app.set('view engine', 'hbs');
-const path = require('path');
+app.set('views', path.join(__dirname, 'views'));
 
 const friendsRouter = require('./routes/friends.router.js');
 const messagesRouter = require('./routes/messages.router.js');
@@ -21,6 +22,13 @@ app.use((req, res, next) => {
 
 app.use('/site', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+
+app.get('/', (req, res) => {
+	res.render('index', {
+		title: 'My Friends Are Very Famous',
+		caption: 'Let\'s travel!',
+	})
+});
 
 app.use('/friends', friendsRouter);
 app.use('/messages', messagesRouter);
